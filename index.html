@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranav Jasyal | Portfolio</title>
+    <style>
+        /* Reset CSS */
+        body, h1, h2, h3, p, ul, li, a, img {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            color: #00ff00;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        /* Hacker Effect: Matrix Falling Code */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://thumbs.gfycat.com/BowedDiscreteKestrel-size_restricted.gif') center/cover no-repeat;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        /* Header */
+        header {
+            background-color: #111;
+            color: #00ff00;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 255, 0, 0.3);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            text-shadow: 0 0 8px #00ff00;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        header nav ul li a {
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #0f0;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 8px #00ff00;
+        }
+
+        #about .profile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        #about .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #00ff00;
+        }
+
+        #about .profile-text {
+            max-width: 800px;
+        }
+
+        #about .profile-text p {
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skills-list li {
+            background-color: #111;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 255, 0, 0.2);
+        }
+
+        .skills-list li h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 8px #00ff00;
+        }
+
+        .skills-list li p {
+            color: #8f8;
+        }
+/* Modal Styles */
+.modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            flex-direction: column;
+        }
+
+        .modal h1 {
+            color: #00ff00;
+            text-shadow: 0 0 8px #00ff00;
+            margin-bottom: 1rem;
+        }
+
+        .modal input {
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            border: 1px solid #00ff00;
+            background: #000;
+            color: #00ff00;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 0 0 5px #000;
+        }
+
+        .modal button:hover {
+            background-color: #0f0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #111;
+            color: #00ff00;
+            text-shadow: 0 0 8px #00ff00;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #00ff00;
+            color: #000;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            font-size: 1.2rem;
+            box-shadow: 0 0 8px #00ff00;
+        }
+
+        #back-to-top:hover {
+            background-color: #0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal" id="age-modal">
+        <h1>Welcome to Pranav Jasyal's Portfolio</h1>
+        <p>Please enter your age to proceed:</p>
+        <input type="number" id="age-input" placeholder="Enter your age">
+        <button id="submit-age">Submit</button>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>Pranav Jasyal</h1>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<hr>
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="profile">
+                <img src="C:\Users\kashish jasyal\Downloads\WhatsApp Image 2024-10-28 at 20.38.51_193a8ceb.jpg" alt="Pranav Jasyal's Profile Picture">
+                <div class="profile-text">
+                    <p>
+                        Hello! My name is Pranav Jasyal, a second-year Computer Science Engineering student at Chitkara University. With a passion for technology and innovation, I specialize in full-stack web development and have a growing interest in artificial intelligence.
+                    </p>
+                    <p>
+                        My skills include designing dynamic web applications, problem-solving, and creating efficient algorithms. I am also the Vice President of the CSI Student Branch, where I actively lead tech initiatives and organize hackathons.
+                    </p>
+                    <p>
+                        Apart from academics, I love playing chess to sharpen my strategic thinking and problem-solving abilities. I believe in continuous learning and aim to build solutions that make a positive impact in the tech world.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+<hr>
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>
+                    <h3>C Programming</h3>
+                    <p>Proficient in developing efficient algorithms and working with low-level programming constructs.</p>
+                </li>
+                <li>
+                    <h3>C++ Programming</h3>
+                    <p>Experienced in object-oriented programming and solving complex problems using advanced data structures.</p>
+                </li>
+                <li>
+                    <h3>JavaScript</h3>
+                    <p>Skilled in creating dynamic, interactive web applications and integrating APIs.</p>
+                </li>
+                <li>
+                    <h3>HTML & CSS</h3>
+                    <p>Expertise in crafting responsive and visually appealing front-end designs.</p>
+                </li>
+                <li>
+                    <h3>SQL & Database Management</h3>
+                    <p>Experienced in designing, managing, and querying databases to handle large-scale data operations efficiently.</p>
+                </li>
+                <li>
+                    <h3>Responsive Web Design</h3>
+                    <p>Skilled in creating cross-platform websites using modern CSS frameworks and design principles to ensure compatibility across devices.</p>
+                </li>
+                <li>
+                    <h3>Team Collaboration</h3>
+                    <p>Proven ability to collaborate with peers on team projects, effectively manage tasks, and ensure timely project delivery.</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+<hr>
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Social Media Website</h3>
+                <p>
+                    Designed and developed a fully functional social media platform that allows users to create profiles, post updates, and interact with others. The front end is built using HTML, CSS, and JavaScript, offering a responsive and user-friendly interface. The back end integrates SQL for secure database management, handling user authentication, and data operations efficiently.
+                </p>
+                <p>
+                    Key features include user authentication, responsive design, and interaction functionalities like liking and commenting on posts. This project showcases my ability to create scalable, full-stack web applications that meet modern standards.
+                </p>
+                <p>
+                  Project link:  <a href="https://moneythakur000.github.io/CONNECTX/">Here</a>
+                </p>
+            </div>
+        </div>
+    </section>
+<hr>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact</h2>
+            <p><strong>Email:</strong> pranav1385.be23@chitkarauniversity.edu.in</p>
+            <p><strong>Phone:</strong> +91 78761211696</p>
+            <p><strong>Location:</strong> Kangra, India 177043</p>
+        </div>
+    </section>
+    <script>
+       const modal = document.getElementById('age-modal');
+        const ageInput = document.getElementById('age-input');
+        const submitAge = document.getElementById('submit-age');
+
+        // Function to check if the user is 18 or older
+        submitAge.addEventListener('click', () => {
+            const age = parseInt(ageInput.value);
+            if (!isNaN(age) && age >= 18) {
+                modal.style.display = 'none'; // Hide the modal
+                document.querySelectorAll('header, section, footer').forEach(el => {
+                    el.style.display = 'block'; // Show website content
+                });
+            } else {
+                alert('You must be 18 or older to access this site.');
+            }
+        });
+
+    
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
